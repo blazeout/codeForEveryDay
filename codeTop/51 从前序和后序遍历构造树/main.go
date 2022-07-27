@@ -1,4 +1,6 @@
-package _1_从前序和后序遍历构造树
+package main
+
+import "fmt"
 
 type TreeNode struct {
 	Val   int
@@ -24,4 +26,24 @@ func buildTree(preorder []int, inorder []int) *TreeNode {
 	root.Left = buildTree(preorder[1:i+1], inorder[:i])
 	root.Right = buildTree(preorder[i+1:], inorder[i+1:])
 	return root
+}
+
+type Student struct {
+	Name string
+	Age  int
+}
+
+func main() {
+	student := []Student{
+		{"张三", 18},
+		{"李四", 20},
+		{"王五", 22},
+	}
+	mp := make(map[string]*Student)
+	// range 生成的v 是从student中取出的值, &v的话就是一直是v的地址, 后面改变了v的值
+	// 那么map中的value也会改变
+	for _, v := range student {
+		mp[v.Name] = &v
+	}
+	fmt.Println(mp)
 }
