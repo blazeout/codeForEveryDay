@@ -6,7 +6,7 @@ import (
 	"unsafe"
 )
 
-// Definition for a binary tree node.
+// TreeNode Definition for a binary tree node.
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
