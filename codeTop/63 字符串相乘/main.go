@@ -1,6 +1,9 @@
 package main
 
-import "strconv"
+import (
+	"fmt"
+	"strconv"
+)
 
 // 普通方法
 func multiply(num1 string, num2 string) (ans string) {
@@ -58,6 +61,24 @@ func addStrings(num1, num2 string) string {
 // 优化竖式相乘
 
 func main() {
-	ans := multiply("123", "456")
-	print(ans)
+	back([]int{1, 2, 3}, 3, []int{})
+	fmt.Println(ans)
+}
+
+var ans [][]int
+
+func back(data []int, lenth int, res []int) {
+	if len(res) == lenth {
+		tmp := make([]int, len(res))
+		copy(tmp, res)
+		ans = append(ans, tmp)
+	}
+
+	for i := 0; i < len(data); i++ {
+		ans2 := append(res, data[i])
+		x := data[:i]
+		y := data[i+1:]
+		ans1 := append(x, y...)
+		back(ans1, lenth, ans2)
+	}
 }
