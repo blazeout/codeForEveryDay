@@ -1,4 +1,4 @@
-package _1_反转链表
+package _1_reverseList
 
 type ListNode struct {
 	Val  int
